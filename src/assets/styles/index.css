@@ -1,0 +1,40 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  background: linear-gradient(121.64deg, #f8f3ed 76.88%, #ffb6a3 115.43%);
+  color: #333;
+}
+
+#root {
+  height: 100%;
+  width: 100%;
+}
+
+p {
+  line-height: 1.8;
+}
+
+ul,
+li {
+  list-style: none;
+}
+
+/* 隐藏滚动条但保留滚动功能 */
+*::-webkit-scrollbar {
+  display: none;
+}
+
+* {
+  -ms-overflow-style: none; /* 适用于 IE 和 Edge */
+  scrollbar-width: none; /* 适用于 Firefox */
+}
