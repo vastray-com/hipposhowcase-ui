@@ -14,7 +14,7 @@ type Props = {
   recommend?: string | null
   tips?: string[] | null
 }
-export const AIInsight: FC<Props> = ({ content, isNewRecord, recommend ,tips}) => {
+export const AIInsight: FC<Props> = ({ content, isNewRecord, recommend, tips }) => {
   const { isRecording } = useContext(RecorderContext)
   const { currentNoteId } = useContext(CustomerContext)
   const [data, setData] = useState<Note.AIContent | null>(null)
@@ -46,32 +46,32 @@ export const AIInsight: FC<Props> = ({ content, isNewRecord, recommend ,tips}) =
 
   return (
     <SectionWrapper title="AI 辅助诊疗" extra={(isNewRecord && isRecording) ? <span className="text-[12px] text-info font-normal">AI 分析中...</span> : null}>
-      <div className='overflow-auto h-full'>
-      {
-        isRecording && tips && tips.length >0 && (
-          <div className="my-[8px] p-[12px] bg-[#F8F3ED4D]">
-            <p className='text-[#FFB6A3] flex items-center'>
-              <i className='i-heroicons-outline:light-bulb text-black2 text-[18px] text-inherit' />
-              <span className=" text-info font-normal text-[14px] ml-[4px] text-inherit">提问建议</span>
-            </p>
-            <ul className="ml-[4px] flex flex-col gap-y-[8px] mt-[8px]">
-              {tips.map((tip, index) => (
-                <li key={index} className="text-[14px] text-info font-normal leading-relaxed">{`${index+1}. ${tip}`}</li>
-              ))}
-            </ul>
-          </div>
-        )
-      }
+      <div className="h-full overflow-auto">
+        {
+          tips && tips.length > 0 && (
+            <div className="my-[8px] bg-[#F8F3ED4D] p-[12px]">
+              <p className="flex items-center text-[#FFB6A3]">
+                <i className="i-heroicons-outline:light-bulb text-[18px] text-black2 text-inherit" />
+                <span className="ml-[4px] text-[14px] text-info text-inherit font-normal">问诊建议</span>
+              </p>
+              <ul className="ml-[4px] mt-[8px] flex flex-col gap-y-[8px]">
+                {tips.map((tip, index) => (
+                  <li key={index} className="text-[14px] text-info font-normal leading-relaxed">{`${index + 1}. ${tip}`}</li>
+                ))}
+              </ul>
+            </div>
+          )
+        }
 
-      {
-        isNewRecord && !isRecording && <Orb />
-      }
-      {
-        isNewRecord && isRecording && !data && <Orb forceHoverState />
-      }
-      {
-        (!isNewRecord || (isRecording && data)) && <AIInsightContent data={data} />
-      }
+        {
+          isNewRecord && !isRecording && <Orb />
+        }
+        {
+          isNewRecord && isRecording && !data && <Orb forceHoverState />
+        }
+        {
+          (!isNewRecord || (isRecording && data)) && <AIInsightContent data={data} />
+        }
       </div>
     </SectionWrapper>
   )
