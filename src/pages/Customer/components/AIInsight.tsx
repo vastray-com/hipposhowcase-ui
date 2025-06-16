@@ -12,8 +12,9 @@ type Props = {
   content?: string | null
   isNewRecord: boolean
   recommend?: string | null
+  tips?: string[] | null
 }
-export const AIInsight: FC<Props> = ({ content, isNewRecord, recommend }) => {
+export const AIInsight: FC<Props> = ({ content, isNewRecord, recommend ,tips}) => {
   const { isRecording } = useContext(RecorderContext)
   const { currentNoteId } = useContext(CustomerContext)
   const [data, setData] = useState<Note.AIContent | null>(null)
@@ -45,6 +46,19 @@ export const AIInsight: FC<Props> = ({ content, isNewRecord, recommend }) => {
 
   return (
     <SectionWrapper title="AI 辅助诊疗" extra={(isNewRecord && isRecording) ? <span className="text-[12px] text-info font-normal">AI 分析中...</span> : null}>
+      {
+        isRecording && tips && tips.length >0 && (
+          <div className="mb-2">
+            <span className="text-[12px] text-info font-normal">AI 提示：</span>
+            <ul className="list-disc pl-4">
+              {tips.map((tip, index) => (
+                <li key={index} className="text-[12px] text-info font-normal">{tip}</li>
+              ))}
+            </ul>
+          </div>
+        )
+      }
+
       {
         isNewRecord && !isRecording && <Orb />
       }

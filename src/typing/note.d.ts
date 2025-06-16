@@ -64,16 +64,38 @@ declare namespace Note {
   }
 
   type AIContent = {
-    // 病史情况
-    history?: string
-    // 诊断推荐
-    diagnosis?: string
-    // 疾病风险
-    risk?: string
-    // 健康建议
-    advice?: string
-    // 产品推荐
-    recommend?: string
+    // 主诉
+    chief_complaint: string
+    // 现病史
+    present_history: string
+    //  既往史
+    past_history:string
+    // 过敏史
+    allergy_history: string
+    // 个人史
+    personal_history: string
+    //  家族史
+    family_history:string
+    // 生育史
+    childbearing_history: string
+    // 婚姻史
+    marriage_history: string
+    // 月经史
+    menstrual_history: string
+    // 体格检查
+    physique: string
+    // 辅助诊断
+    diagnosis: string
+    // 复诊计划初步诊断
+    plan: string
+    // 辅助检查
+    examination_advice: string
+    // 注意事项
+    advice: string
+    // 用药或治疗
+    medication_treatment_advice: string
+    // 饮食与运动
+    diet_exercise_advice: string
   }
 
   type SaleCustomerHistoryParams = {

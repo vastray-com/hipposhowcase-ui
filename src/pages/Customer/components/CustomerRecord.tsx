@@ -21,6 +21,9 @@ enum RecordStatus {
 type WSMessage = {
   event: 'recognized'
   data: Note.Sentence
+} | {
+  event: 'tips'
+  data: string[]
 }
 
 const url = new URL(import.meta.env.VITE_API_URL)
@@ -30,9 +33,10 @@ type Props = {
   isNewRecord: boolean
   customer: Customer.InternalItem
   recordTitle: string
+  onTips: (tips: string[]) => void
 }
 
-export const CustomerRecord: FC<Props> = ({ noteDetail, customer, recordTitle, isNewRecord }) => {
+export const CustomerRecord: FC<Props> = ({ noteDetail, customer, recordTitle, isNewRecord ,onTips}) => {
   const nav = useNavigate()
   const { currentNoteId, setCurrentNoteId } = useContext(CustomerContext)
   const { getDevice, isRecording, startRecording, stopRecording, waveState } = useContext(RecorderContext)
@@ -87,6 +91,8 @@ export const CustomerRecord: FC<Props> = ({ noteDetail, customer, recordTitle, i
           }
           return [...prev, msg.data]
         })
+      } else if (msg.event === 'tips') {
+        if(msg.data.length > 0 ) onTips(msg.data)
       }
     },
     onClose: () => {
