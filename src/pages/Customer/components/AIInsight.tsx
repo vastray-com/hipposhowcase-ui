@@ -46,13 +46,17 @@ export const AIInsight: FC<Props> = ({ content, isNewRecord, recommend ,tips}) =
 
   return (
     <SectionWrapper title="AI 辅助诊疗" extra={(isNewRecord && isRecording) ? <span className="text-[12px] text-info font-normal">AI 分析中...</span> : null}>
+      <div className='overflow-auto h-full'>
       {
         isRecording && tips && tips.length >0 && (
-          <div className="mb-2">
-            <span className="text-[12px] text-info font-normal">AI 提示：</span>
-            <ul className="list-disc pl-4">
+          <div className="my-[8px] p-[12px] bg-[#F8F3ED4D]">
+            <p className='text-[#FFB6A3] flex items-center'>
+              <i className='i-heroicons-outline:light-bulb text-black2 text-[18px] text-inherit' />
+              <span className=" text-info font-normal text-[14px] ml-[4px] text-inherit">提问建议</span>
+            </p>
+            <ul className="ml-[4px] flex flex-col gap-y-[8px] mt-[8px]">
               {tips.map((tip, index) => (
-                <li key={index} className="text-[12px] text-info font-normal">{tip}</li>
+                <li key={index} className="text-[14px] text-info font-normal leading-relaxed">{`${index+1}. ${tip}`}</li>
               ))}
             </ul>
           </div>
@@ -68,6 +72,7 @@ export const AIInsight: FC<Props> = ({ content, isNewRecord, recommend ,tips}) =
       {
         (!isNewRecord || (isRecording && data)) && <AIInsightContent data={data} />
       }
+      </div>
     </SectionWrapper>
   )
 }
