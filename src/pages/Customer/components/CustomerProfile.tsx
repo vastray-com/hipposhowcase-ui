@@ -160,9 +160,9 @@ export const CustomerProfile: FC<Props> = ({ customer }) => {
               <p>{`姓名：${customer.user_name}`}</p>
               <p>{`性别：${customer.gender}`}</p>
               <p>{`年龄：${customer.age}岁`}</p>
-              <p>{`销售：${customer.sale_name}`}</p>
-              <p>{`用户等级：${customer.user_level}`}</p>
-              <p>{`总消费：${customer.total_consumption ?? '0'}元`}</p>
+              {/*<p>{`销售：${customer.sale_name}`}</p>*/}
+              {/*<p>{`用户等级：${customer.user_level}`}</p>*/}
+              {/*<p>{`总消费：${customer.total_consumption ?? '0'}元`}</p>*/}
             </div>
           </Card>
         ),
@@ -260,9 +260,9 @@ export const CustomerProfile: FC<Props> = ({ customer }) => {
           active
           paragraph={{ rows: 10 }}
           title={false}
-          style={{ height: '256px' }}
+          style={{ height: '164px' }}
         >
-          <div className="h-[256px]">
+          <div className="h-[164px]">
             <MyTabs items={topTab} />
           </div>
         </Skeleton>
@@ -272,9 +272,9 @@ export const CustomerProfile: FC<Props> = ({ customer }) => {
           active
           paragraph={{ rows: 10 }}
           title={false}
-          style={{ height: 'calc(100% - 256px - 16px)', marginTop: '16px' }}
+          style={{ height: 'calc(100% - 164px - 16px)', marginTop: '16px' }}
         >
-          <div className="mt-[16px] h-[calc(100%_-_256px_-_16px)]">
+          <div className="mt-[16px] h-[calc(100%_-_164px_-_16px)]">
             <MyTabs items={bottomTab} />
           </div>
         </Skeleton>
