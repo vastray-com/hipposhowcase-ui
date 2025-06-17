@@ -167,41 +167,41 @@ export const CustomerProfile: FC<Props> = ({ customer }) => {
           </Card>
         ),
       },
-      {
-        key: 'project',
-        label: '已购项目',
-        render: (
-          <Card className="h-full overflow-auto b-0 bg-[#f9f9f9]" size="small" styles={{ body: { padding: '0 8px 0 8px' } }}>
-            <table className="pos-relative h-full w-full overflow-auto text-primary">
-              <thead className="sticky top-0 mt-[12px] h-[32px] bg-[#f9f9f9]">
-                <tr>
-                  <th className="text-left">项目名称</th>
-                  <th className="text-center">总次数</th>
-                  <th className="text-center">实施次数</th>
-                  <th className="text-center">剩余次数</th>
-                </tr>
-              </thead>
-
-              <tbody>
-                {
-                  (projectData && projectData.userBasicProjectInfoPoList.length > 0)
-                    ? projectData.userBasicProjectInfoPoList.map((project, idx) => (
-                        <tr key={idx} className="h-[32px] text-secondary">
-                          <td className="text-left">{project.xmmch}</td>
-                          <td className="w-[64px] text-center">{project.times}</td>
-                          <td className="w-[64px] text-center">{project.leaveearly}</td>
-                          <td className="w-[64px] text-center">{project.times - project.leaveearly}</td>
-                        </tr>
-                      ))
-                    : <tr><td colSpan={4} className="h-[128px] text-center text-secondary">暂无已购项目</td></tr>
-                }
-              </tbody>
-            </table>
-          </Card>
-        ),
-      },
+      // {
+      //   key: 'project',
+      //   label: '已购项目',
+      //   render: (
+      //     <Card className="h-full overflow-auto b-0 bg-[#f9f9f9]" size="small" styles={{ body: { padding: '0 8px 0 8px' } }}>
+      //       <table className="pos-relative h-full w-full overflow-auto text-primary">
+      //         <thead className="sticky top-0 mt-[12px] h-[32px] bg-[#f9f9f9]">
+      //           <tr>
+      //             <th className="text-left">项目名称</th>
+      //             <th className="text-center">总次数</th>
+      //             <th className="text-center">实施次数</th>
+      //             <th className="text-center">剩余次数</th>
+      //           </tr>
+      //         </thead>
+      //
+      //         <tbody>
+      //           {
+      //             (projectData && projectData.userBasicProjectInfoPoList.length > 0)
+      //               ? projectData.userBasicProjectInfoPoList.map((project, idx) => (
+      //                   <tr key={idx} className="h-[32px] text-secondary">
+      //                     <td className="text-left">{project.xmmch}</td>
+      //                     <td className="w-[64px] text-center">{project.times}</td>
+      //                     <td className="w-[64px] text-center">{project.leaveearly}</td>
+      //                     <td className="w-[64px] text-center">{project.times - project.leaveearly}</td>
+      //                   </tr>
+      //                 ))
+      //               : <tr><td colSpan={4} className="h-[128px] text-center text-secondary">暂无已购项目</td></tr>
+      //           }
+      //         </tbody>
+      //       </table>
+      //     </Card>
+      //   ),
+      // },
     ]
-  }, [customer, projectData])
+  }, [customer])
 
   const bottomTab = useMemo<MyTabsItems>(() => {
     const executionItemList = (projectData?.userProjectExecutionInfoPoList || []).map(transformExecutionField)
