@@ -45,7 +45,12 @@ export const AIInsight: FC<Props> = ({ content, isNewRecord, recommend, tips }) 
   }, [currentNoteId, isRecording])
 
   return (
-    <SectionWrapper title="AI 辅助诊疗" extra={(isNewRecord && isRecording) ? <span className="text-[12px] text-info font-normal">AI 分析中...</span> : null}>
+    <SectionWrapper
+      title="AI 辅助诊疗"
+      extra={(isNewRecord && isRecording)
+        ? <span className="text-[12px] text-info font-normal">AI 分析中...</span>
+        : null}
+    >
       <div className="h-full overflow-auto">
         {
           tips && tips.length > 0 && (
@@ -56,7 +61,12 @@ export const AIInsight: FC<Props> = ({ content, isNewRecord, recommend, tips }) 
               </p>
               <ul className="ml-[4px] mt-[8px] flex flex-col gap-y-[8px]">
                 {tips.map((tip, index) => (
-                  <li key={index} className="text-[14px] text-info font-normal leading-relaxed">{`${index + 1}. ${tip}`}</li>
+                  <li
+                    key={index}
+                    className="text-[14px] text-info font-normal leading-relaxed"
+                  >
+                    {`${index + 1}. ${tip}`}
+                  </li>
                 ))}
               </ul>
             </div>
@@ -64,13 +74,11 @@ export const AIInsight: FC<Props> = ({ content, isNewRecord, recommend, tips }) 
         }
 
         {
-          isNewRecord && !isRecording && <Orb />
-        }
-        {
-          isNewRecord && isRecording && !data && <Orb forceHoverState />
-        }
-        {
-          (!isNewRecord || (isRecording && data)) && <AIInsightContent data={data} />
+          data
+            ? <AIInsightContent data={data} />
+            : isRecording
+              ? <Orb forceHoverState />
+              : <Orb />
         }
       </div>
     </SectionWrapper>
