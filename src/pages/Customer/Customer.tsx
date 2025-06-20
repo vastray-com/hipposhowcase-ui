@@ -74,8 +74,7 @@ const CustomerPage = () => {
   }, [message])
 
   // tips 提示
-  const [tips,setTips] = useState<string[]>([])
-
+  const [tips, setTips] = useState<string[]>([])
 
   // 未携带客户信息
   if (!location.state) {
@@ -113,7 +112,7 @@ const CustomerPage = () => {
         <CustomerContext.Provider value={contextValue}>
           <div className="h-[calc(100%_-_48px)] flex items-center justify-between gap-x-[16px] children:shrink-0 children:grow-0 children:basis-[calc((100%_-_16px_-_16px)_/_3)]">
             <CustomerProfile customer={customer} />
-            <CustomerRecord isNewRecord={isNewRecord} noteDetail={noteDetail} customer={customer} recordTitle={recordTitle} onTips={setTips}/>
+            <CustomerRecord isNewRecord={isNewRecord} noteDetail={noteDetail} customer={customer} recordTitle={recordTitle} onTips={setTips} />
             <AIInsight isNewRecord={isNewRecord} content={noteDetail?.content} recommend={noteDetail?.recommend} tips={tips} />
           </div>
         </CustomerContext.Provider>
